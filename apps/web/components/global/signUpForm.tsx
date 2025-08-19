@@ -22,6 +22,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { OAuthButton } from "./oauthButton";
 
 const formSchema = z
   .object({
@@ -196,6 +197,8 @@ export function SignUpForm({
           </a>
           </span>
         </CardFooter>
+        <OAuthButton provider="google" signUp />
+        {/* <OAuthButton provider="github" signUp /> */}
       </Card>
   );
 }
