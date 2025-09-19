@@ -2,6 +2,11 @@
 
 # Logs
 
+/generated/prisma
+/prisma/schema.prisma
+
+config.ts
+
 logs
 _.log
 npm-debug.log_

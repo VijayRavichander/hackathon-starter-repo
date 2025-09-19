@@ -56,27 +56,36 @@ export function SignInForm({
   });
 
   return (
-    <Card className="w-full max-w-md px-20">
-      <CardHeader>
+    <Card className="w-full max-w-md px-20 border-none shadow-none">
+      <CardHeader className="flex flex-col items-center justify-center mt-10">
         <CardTitle>Sign in</CardTitle>
         <CardDescription>Welcome back! Sign in to your account</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-10">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input type="email" {...field} disabled={isPending} />
-                  </FormControl>
-                  <FormMessage className="min-h-[20px]" />
-                </FormItem>
-              )}
-            />
+            <div className="my-4!">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        className=""
+                        type="email"
+                        {...field}
+                        disabled={isPending}
+                      />
+                    </FormControl>
+                    <FormMessage className="min-h-[20px]" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-4!">
+
             <FormField
               control={form.control}
               name="password"
@@ -88,8 +97,9 @@ export function SignInForm({
                   </FormControl>
                   <FormMessage className="min-h-[20px]" />
                 </FormItem>
-              )}
-            />
+                )}
+              />
+            </div>
             <Button
               type="submit"
               className={`w-full ${!onGitHubSignIn ? "mt-6" : ""}`}
@@ -127,8 +137,8 @@ export function SignInForm({
           <a
             href={
               redirectUrl
-                ? `/sign-up?redirect_url=${encodeURIComponent(redirectUrl)}`
-                : "/sign-up"
+                ? `/signup?redirect_url=${encodeURIComponent(redirectUrl)}`
+                : "/signup"
             }
             className="text-primary underline hover:opacity-80"
           >
@@ -136,7 +146,7 @@ export function SignInForm({
           </a>
         </span>
       </CardFooter>
-      <OAuthButton provider="google"  />
+      <OAuthButton provider="google" />
       {/* <OAuthButton provider="github"   /> */}
     </Card>
   );

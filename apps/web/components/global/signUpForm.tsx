@@ -76,7 +76,7 @@ export function SignUpForm({
   });
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md px-20 border-none shadow-none">
       <CardHeader>
         <CardTitle>Sign up</CardTitle>
         <CardDescription>Create a new account to get started</CardDescription>
@@ -84,7 +84,7 @@ export function SignUpForm({
       <CardContent className="space-y-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <div className="flex gap-4">
+            <div className="my-2!">
               <FormField
                 control={form.control}
                 name="firstName"
@@ -98,59 +98,67 @@ export function SignUpForm({
                   </FormItem>
                 )}
               />
+              <div className="my-4!">
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem className="flex-1">
+                      <FormLabel>Last name</FormLabel>
+                      <FormControl>
+                        <Input type="text" {...field} disabled={isPending} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="my-4!">
               <FormField
                 control={form.control}
-                name="lastName"
+                name="email"
                 render={({ field }) => (
-                  <FormItem className="flex-1">
-                    <FormLabel>Last name</FormLabel>
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="text" {...field} disabled={isPending} />
+                      <Input type="email" {...field} disabled={isPending} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input type="email" {...field} disabled={isPending} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} disabled={isPending} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} disabled={isPending} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="my-4!">
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} disabled={isPending} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="my-4!">
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm password</FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} disabled={isPending} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <Button
               type="submit"
               className={`w-full ${!onGitHubSignIn ? "mt-6" : ""}`}
@@ -188,17 +196,17 @@ export function SignUpForm({
           <a
             href={
               redirectUrl
-                ? `/sign-in?redirect_url=${encodeURIComponent(redirectUrl)}`
-                : "/sign-in"
+                ? `/signin?redirect_url=${encodeURIComponent(redirectUrl)}`
+                : "/signin"
             }
             className="text-primary underline hover:opacity-80"
           >
             Sign in
           </a>
-          </span>
-        </CardFooter>
-        <OAuthButton provider="google" signUp />
-        {/* <OAuthButton provider="github" signUp /> */}
-      </Card>
+        </span>
+      </CardFooter>
+      <OAuthButton provider="google" signUp />
+      {/* <OAuthButton provider="github" signUp /> */}
+    </Card>
   );
 }
